@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aniversário NPR – Confirmação</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      background: #f5f5f5;
+      font-size: 14px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    form {
+      background: #fff;
+      padding: 15px;
+      border-radius: 6px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+    input[type="text"], input[type="number"], textarea {
+      width: 100%;
+      padding: 6px 8px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    .radio-group {
+      margin-top: 8px;
+    }
+    .radio-line {
+      margin-bottom: 6px;
+    }
+    .radio-line label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: normal;
+    }
+    .child-group, .visitor-group {
+      margin-top: 10px;
+      border: 1px solid #ddd;
+      padding: 8px;
+      border-radius: 4px;
+      background: #f9f9f9;
+      font-size: 13px;
+    }
+    .child-flex {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .child-flex > div {
+      flex: 1;
+      min-width: 100px;
+    }
+    .btn-add {
+      margin-top: 8px;
+      background: #e0e0e0;
+      color: #333;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .remove-btn {
+      margin-top: 8px;
+      background: #ffdddd;
+      color: #900;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    button[type="submit"] {
+      margin-top: 15px;
+      padding: 10px;
+      background: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      width: 100%;
+    }
+    .info-box {
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin: 20px auto 10px auto;
+      max-width: 500px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .info-box b {
+      display: block;
+      margin-top: 8px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Aniversário NPR – 09/07</h1>
+
+<form action="https://hook.us2.make.com/kahxdw9rulr1c34u2vubnsbuauocdtam" method="POST">
+  <label for="nome">🧑 Nome do sócio:</label>
+  <input type="text" id="nome" name="nome" required>
+
+  <label>✅ Participação do sócio:</label>
+  <div class="radio-group">
+    <div class="radio-line">
+      <label><input type="radio" name="participacao" value="Almoço e Sessão" required> 🍽️ Almoço e Sessão</label>
+    </div>
+    <div class="radio-line">
+      <label><input type="radio" name="participacao" value="Apenas Sessão"> 🌙 Apenas Sessão</label>
+    </div>
+    <div class="radio-line">
+      <label><input type="radio" name="participacao" value="Não poderá participar"> ❌ Não poderei participar</label>
+    </div>
+  </div>
+
+  <label>👧 Crianças ou jovens que irá levar:</label>
+  <div id="criancas-container"></div>
+  <button type="button" class="btn-add" onclick="addCrianca()">+ Adicionar criança/jovem</button>
+
+  <label>👤 Visitantes que irá levar:</label>
+  <div id="visitantes-container"></div>
+  <button type="button" class="btn-add" onclick="addVisitante()">+ Adicionar visitante</button>
+
+  <button type="submit">Enviar</button>
+</form>
+
+<div class="info-box">
+  <b>🧑 Adultos – R$100,00</b>
+  • Almoço<br>
+  • Seguranças<br>
+  • Sopa e café com pão antes da sessão<br>
+  • Lanche pós sessão
+
+  <b>👧 Crianças e jovens a partir de 9 anos – R$70,00</b>
+  • Almoço<br>
+  • Sopa e café com pão antes da sessão<br>
+  • Lanche pós sessão
+
+  <b>🧒 Crianças de 5 a 8 anos – R$25,00</b>
+  • Almoço<br>
+  • Sopa e café com pão antes da sessão<br>
+  • Lanche pós sessão
+
+  <b>🌙 Apenas Sessão – R$35,00</b>
+  (Sócios e visitantes adultos)<br>
+  • Seguranças<br>
+  • Lanche pós sessão
+</div>
+
+<script>
+  function addCrianca() {
+    const container = document.getElementById('criancas-container');
+    const index = container.children.length;
+    const html = `
+      <div class="child-group">
+        <div class="child-flex">
+          <div>
+            <label>Nome:</label>
+            <input type="text" name="crianca_nome[]" required>
+          </div>
+          <div>
+            <label>Idade:</label>
+            <input type="number" name="crianca_idade[]" min="0" required>
+          </div>
+        </div>
+        <label>Participação:</label>
+        <div class="radio-group">
+          <div class="radio-line">
+            <label><input type="radio" name="crianca_participacao_${index}" value="Almoço e Sessão" required> 🍽️ Almoço e Sessão</label>
+          </div>
+          <div class="radio-line">
+            <label><input type="radio" name="crianca_participacao_${index}" value="Apenas Sessão"> 🌙 Apenas Sessão (Sem taxa)</label>
+          </div>
+        </div>
+        <button type="button" class="remove-btn" onclick="this.parentElement.remove()">– Remover</button>
+      </div>
+    `;
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    container.appendChild(div);
+  }
+
+  function addVisitante() {
+    const container = document.getElementById('visitantes-container');
+    const index = container.children.length;
+    const html = `
+      <div class="visitor-group">
+        <div class="child-flex">
+          <div>
+            <label>Nome:</label>
+            <input type="text" name="visitante_nome[]" required>
+          </div>
+        </div>
+        <label>Participação:</label>
+        <div class="radio-group">
+          <div class="radio-line">
+            <label><input type="radio" name="visitante_participacao_${index}" value="Almoço e Sessão" required> 🍽️ Almoço e Sessão</label>
+          </div>
+          <div class="radio-line">
+            <label><input type="radio" name="visitante_participacao_${index}" value="Apenas Sessão"> 🌙 Apenas Sessão</label>
+          </div>
+        </div>
+        <button type="button" class="remove-btn" onclick="this.parentElement.remove()">– Remover</button>
+      </div>
+    `;
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    container.appendChild(div);
+  }
+</script>
+
+</body>
+</html>
